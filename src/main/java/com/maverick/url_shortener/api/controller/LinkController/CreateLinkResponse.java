@@ -1,4 +1,8 @@
 package com.maverick.url_shortener.api.controller.LinkController;
 
-public record CreateLinkResponse(String shortenedLink) {
+import lombok.Value;
+
+@Value
+public class CreateLinkResponse {
+    String shortenedLink;
 }
