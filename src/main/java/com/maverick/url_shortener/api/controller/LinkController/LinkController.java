@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.maverick.url_shortener.logic.services.ShortenerService;
-
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -15,7 +13,7 @@ public class LinkController {
     private ShortenerService shortenerService;
 
     @PostMapping("/link")
-    Mono create(@RequestBody CreateLinkRequestBody body) {
+    Mono<CreateLinkResponse> create(@RequestBody CreateLinkRequestBody body) {
         return shortenerService.getShortenedLink(body.link()).map(CreateLinkResponse::new);
     }
 }
