@@ -1,0 +1,4 @@
+com\maverick\url_shortener\LinkControllerTest.class
+com\maverick\url_shortener\RedisRepoTest.class
+com\maverick\url_shortener\ShortenerserviceTest.class
+com\maverick\url_shortener\ShortenerserviceTest$1.class
