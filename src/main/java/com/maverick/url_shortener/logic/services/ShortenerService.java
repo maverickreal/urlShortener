@@ -24,4 +24,8 @@ public class ShortenerService {
         return shortenerRepo.save(link)
                 .map(savedLink -> baseUrl + savedLink.key());
     }
+
+    public Mono<Link> getLink(String key) {
+        return shortenerRepo.findByKey(key);
+    }
 }

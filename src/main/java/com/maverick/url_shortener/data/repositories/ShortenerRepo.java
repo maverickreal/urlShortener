@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 public interface ShortenerRepo {
     public Mono<Link> save(Link link);
 
-    public Mono<Link> findByRandomKey(String randomKey);
+    public Mono<Link> findByKey(String randomKey);
 }

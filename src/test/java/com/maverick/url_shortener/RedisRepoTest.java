@@ -24,7 +24,7 @@ public class RedisRepoTest {
     @Test
     public void save() {
         Link link = new Link("http://bard.google.com", "dfa");
-        StepVerifier.create(redisRepo.save(link).flatMap(arg -> redisRepo.findByRandomKey(link.key())))
+        StepVerifier.create(redisRepo.save(link).flatMap(arg -> redisRepo.findByKey(link.key())))
                 .expectNext(link)
                 .verifyComplete();
     }

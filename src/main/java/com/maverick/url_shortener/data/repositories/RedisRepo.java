@@ -17,7 +17,7 @@ public class RedisRepo implements ShortenerRepo {
     }
 
     @Override
-    public Mono<Link> findByRandomKey(String key) {
+    public Mono<Link> findByKey(String key) {
         return ops.opsForValue().get(key).map(str -> new Link(str, key));
     }
 }
