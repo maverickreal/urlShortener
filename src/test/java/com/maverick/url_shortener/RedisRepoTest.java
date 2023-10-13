@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.maverick.url_shortener.data.repositories.RedisRepo;
-import com.maverick.url_shortener.logic.services.Link;
+import com.maverick.url_shortener.logic.services.LinkDto;
 import reactor.test.StepVerifier;
 
 @SpringBootTest()
@@ -17,13 +17,13 @@ public class RedisRepoTest {
 
     @Test
     public void returnArgLink() {
-        Link link = new Link("http://bard.google.com", "dfa");
+        LinkDto link = new LinkDto("http://start.spring.io", "xyz");
         StepVerifier.create(redisRepo.save(link)).expectNext(link).verifyComplete();
     }
 
     @Test
     public void save() {
-        Link link = new Link("http://bard.google.com", "dfa");
+        LinkDto link = new LinkDto("http://start.spring.io", "xyz");
         StepVerifier.create(redisRepo.save(link).flatMap(arg -> redisRepo.findByKey(link.key())))
                 .expectNext(link)
                 .verifyComplete();

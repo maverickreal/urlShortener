@@ -12,7 +12,7 @@ public class ShortenerService {
     @Autowired
     private ShortenerRepo shortenerRepo;
     @Value("${shortenerService.baseUrl}")
-    static private String baseUrl;
+    private String baseUrl;
 
     public ShortenerService(ShortenerRepo _shortenerRepo) { // test
         shortenerRepo = _shortenerRepo;
@@ -20,12 +20,12 @@ public class ShortenerService {
 
     public Mono<String> getShortenedLink(String longLink) {
         String randomKey = RandomStringUtils.randomAlphabetic(5);
-        Link link = new Link(longLink, randomKey);
+        LinkDto link = new LinkDto(longLink, randomKey);
         return shortenerRepo.save(link)
                 .map(savedLink -> baseUrl + savedLink.key());
     }
 
-    public Mono<Link> getLink(String key) {
+    public Mono<LinkDto> getLink(String key) {
         return shortenerRepo.findByKey(key);
     }
 }

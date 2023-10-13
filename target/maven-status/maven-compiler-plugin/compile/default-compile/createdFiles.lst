@@ -1,9 +1,7 @@
-com\maverick\url_shortener\RedisConfiguration.class
 com\maverick\url_shortener\data\repositories\ShortenerRepo.class
-com\maverick\url_shortener\logic\services\Link.class
+com\maverick\url_shortener\api\controller\LinkController\LinkDto.class
 com\maverick\url_shortener\data\repositories\RedisRepo.class
-com\maverick\url_shortener\api\controller\LinkController\CreateLinkRequestBody.class
-com\maverick\url_shortener\api\controller\LinkController\CreateLinkResponse.class
+com\maverick\url_shortener\logic\services\LinkDto.class
 com\maverick\url_shortener\api\controller\LinkController\LinkController.class
 com\maverick\url_shortener\logic\services\ShortenerService.class
 com\maverick\url_shortener\UrlShortenerApplication.class

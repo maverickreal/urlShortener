@@ -16,12 +16,17 @@ public class LinkController {
     @Autowired
     private ShortenerService shortenerService;
 
-    @PostMapping("/link")
-    Mono<CreateLinkResponse> create(@RequestBody CreateLinkRequestBody body) {
-        return shortenerService.getShortenedLink(body.link()).map(CreateLinkResponse::new);
+    @GetMapping
+    public Mono<String> home() {
+        return Mono.just("Hello World!");
     }
 
-    @GetMapping("/link/{key}")
+    @PostMapping
+    Mono<LinkDto> create(@RequestBody LinkDto body) {
+        return shortenerService.getShortenedLink(body.getLink()).map(LinkDto::new);
+    }
+
+    @GetMapping("{key}")
     public Mono<ResponseEntity<Object>> getLink(@PathVariable String key) {
         return shortenerService.getLink(key).map(
                 link -> ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT)

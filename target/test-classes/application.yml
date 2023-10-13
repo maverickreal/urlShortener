@@ -4,3 +4,4 @@ spring:
       host: ${embedded.redis.host}
       port: ${embedded.redis.port}
       password: ${embedded.redis.password}
+shortenerService.baseUrl: 127.0.0.1:8080/
