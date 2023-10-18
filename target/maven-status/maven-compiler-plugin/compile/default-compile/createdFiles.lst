@@ -1,4 +1,7 @@
+com\maverick\url_shortener\logic\components\filters\RateLimittingFilter.class
 com\maverick\url_shortener\data\repositories\ShortenerRepo.class
+com\maverick\url_shortener\logic\configurations\RedisConfig.class
+com\maverick\url_shortener\logic\services\RateLimittingService.class
 com\maverick\url_shortener\api\controller\LinkController\LinkDto.class
 com\maverick\url_shortener\data\repositories\RedisRepo.class
 com\maverick\url_shortener\logic\services\LinkDto.class
