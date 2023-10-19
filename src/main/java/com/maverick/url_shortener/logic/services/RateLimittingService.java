@@ -9,6 +9,7 @@ import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.BandwidthBuilder;
 import io.github.bucket4j.BucketConfiguration;
 import io.github.bucket4j.distributed.proxy.ProxyManager;
+import reactor.core.publisher.Mono;
 
 @Service
 public class RateLimittingService {
@@ -19,12 +20,12 @@ public class RateLimittingService {
     @Value("${tokenBucketPeriod}")
     private int tokenBucketPeriod;
 
-    public Boolean allowRequest(String key) {
+    public Mono<Boolean> allowRequest(String key) {
         Bandwidth limit = BandwidthBuilder.builder()
                 .capacity(tokenBucketCapacity)
                 .refillIntervally(tokenBucketCapacity, Duration.ofMinutes(tokenBucketPeriod))
                 .build();
         Supplier<BucketConfiguration> bucketConfigSup = () -> BucketConfiguration.builder().addLimit(limit).build();
-        return buckets.builder().build(key, bucketConfigSup).tryConsume(1);
+        return Mono.just(buckets.builder().build(key, bucketConfigSup).tryConsume(1));
     }
 }

@@ -1,5 +1,5 @@
 shortenerService.baseUrl: 127.0.0.1:8080/
 CACHE_NAME: rate_limitting_cache
-REDIS_ADDRESS: redis://:6379
+REDIS_ADDRESS: redis://:6378
 tokenBucketPeriod: 1
 tokenBucketCapacity: 10
